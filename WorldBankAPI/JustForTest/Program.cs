@@ -13,7 +13,7 @@ namespace JustForTest
             Console.WriteLine(data.Length);
             foreach(var item in data)
             {                
-                Console.WriteLine(item.id + "--" + item.name + " - " + item.capitalCity);
+                Console.WriteLine(item.id + "--" + item.name + " - " + "-" + item.incomeLevel.value);
             }
         }
     }
