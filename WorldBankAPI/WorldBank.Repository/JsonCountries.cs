@@ -16,6 +16,7 @@ namespace WorldBank.Repository
                 var response = await client.GetAsync(req);
                 response.EnsureSuccessStatusCode();
                 var str= await response.Content.ReadAsStringAsync();
+                //System.IO.File.WriteAllText("countries" + page + ".txt", str);
                 return str;
             }
         }

@@ -5,7 +5,9 @@ using Newtonsoft.Json.Linq;
 using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("WorldBank.Test")]
 namespace WorldBank.Repository
 {
     public class CountriesRepository
@@ -27,9 +29,8 @@ namespace WorldBank.Repository
         }
         public async Task<Country[]> GetCountriesWithAggregates()
         {
-            var ret = new List<Country>();
-            
-            var jsonData = await data.JsonData();
+            var ret = new List<Country>();            
+            var jsonData = await data.JsonData();            
             var jo = JArray.Parse(jsonData);            
             var page = jo[0].ToObject<Pagination>();
             var countries = jo[1].ToObject<Country[]>();
