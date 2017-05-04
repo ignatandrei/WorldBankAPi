@@ -13,6 +13,7 @@ namespace WorldBank.Test
             //uses [assembly: InternalsVisibleTo("WorldBank.Test")]
             var c = new CountriesRepository(new JsonCountriesFromHard());
             var data = c.GetCountries().Result;
+            Assert.Equal(218, data.Length);
         }
     }
 }
