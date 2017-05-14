@@ -5,15 +5,15 @@ using Xunit;
 /// </summary>
 namespace WorldBank.Test
 {
-    public class GetCountriesFacts
+    public class GetIndicatorsFacts
     {
         [Fact]
         public void GetAndInterpretData()
         {
             //uses [assembly: InternalsVisibleTo("WorldBank.Test")]
-            var c = new CountriesRepository(new JsonFromHard("Countries"));
-            var data = c.GetCountries().Result;
-            Assert.Equal(218, data.Length);
+            var c = new IndicatorRepository(new JsonFromHard("indicators"));
+            var data = c.GetIndicators().Result;
+            Assert.Equal(16174, data.Length);
         }
     }
 }
