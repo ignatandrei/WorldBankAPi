@@ -6,27 +6,30 @@ using Xunit;
 using System.Linq;
 using System.IO;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using System;
 /// <summary>
 /// http://haacked.com/archive/2012/01/02/structuring-unit-tests.aspx/
 /// </summary>
 namespace WorldBank.Test
 {
-    //[ShortRunJob]    
+    [ShortRunJob]    
     [MemoryDiagnoser]
     //[MediumRunJob]
     //[RJ]
-    [DryJob]
+    //[DryJob]
     public class GetIndicatorsFacts
     {
         
 
         [Fact]
         [Benchmark]        
-        public void GetAndInterpretData()
+        public async Task GetAndInterpretData()
         {
             //uses [assembly: InternalsVisibleTo("WorldBank.Test")]
             var c = new IndicatorRepository(new JsonFromHard("indicators"));
-            var data = c.GetIndicators().Result;
+            var data = await c.GetIndicators();
+            //Console.WriteLine($"total {data.Length}");
             Assert.Equal(16174, data.Length);
         }
         [Fact]

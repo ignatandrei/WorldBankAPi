@@ -21,15 +21,20 @@ namespace WorldBank.Test
         /// </summary>
         /// <param name="page"></param>
         /// <returns></returns>
-        public Task<string> JsonData(int page = 1) {
+        public async Task<string> JsonData(int page = 1) {
             //Debug.WriteLine($"reading page {page}");
 
             //string name= $@"D:\github\WorldBankAPi\WorldBankAPi\WorldBankAPI\WorldBank.Test\{NameFile}\{NameFile}{page}.txt";
             string name=$@"{NameFile}\{NameFile}{page}.txt";
             if (!File.Exists(name))
                 throw new FileNotFoundException($"file does not exists {name}", name);
-
-            return Task.FromResult( File.ReadAllText(name));                        
+            //Console.WriteLine($"reading file {name}");
+            using (var reader = File.OpenText(name))
+            {
+                var fileText = await reader.ReadToEndAsync();
+                return fileText;
+            }
+            
         }
 
     }
