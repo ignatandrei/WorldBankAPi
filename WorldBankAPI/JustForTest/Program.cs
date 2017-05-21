@@ -1,4 +1,6 @@
-﻿using BenchmarkDotNet.Running;
+﻿using BenchmarkDotNet.Attributes.Jobs;
+using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Running;
 using System;
 
 namespace JustForTest
@@ -10,11 +12,18 @@ namespace JustForTest
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World Bank!");
-            //GetCountries();
-            //GetIndicators();
+            //var b = new BasicData();
+            //var indics = b.GetIndicators();
+            ////var country = b.GetCountries();
+            //foreach(var i in indics)
+            //{
+            //    Console.WriteLine(i.name);
+            //}
+
             var summary = BenchmarkRunner.Run<BasicData>();
         }
-        
-        
+                
     }
+   
+
 }

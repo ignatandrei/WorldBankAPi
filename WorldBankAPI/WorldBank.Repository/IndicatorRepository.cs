@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using Polly;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace WorldBank.Repository
 
         public async Task<Indicator[]> GetIndicators()
         {
+            //this was first iteration - getting data sequentially
             //var ret = new List<Indicator>();
             //var jsonData = await data.JsonData();
             //var jo = JArray.Parse(jsonData);
