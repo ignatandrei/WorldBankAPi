@@ -32,7 +32,7 @@ namespace WorldBank.Test
             //Console.WriteLine($"total {data.Length}");
             Assert.Equal(16174, data.Length);
         }
-        [Fact]
+        //[Fact]
         public void BenchMark()
         {
             var summary = BenchmarkRunner.Run(this.GetType());

@@ -56,10 +56,10 @@ namespace WorldBank.Repository
             {
                 currentPage++;
                 var itemPage = currentPage;
-                var task = data.JsonData(itemPage)                    
+                var task = data.JsonData(itemPage)
                     .ContinueWith(it =>
                     {
-                        
+
                         var data = JArray.Parse(it.Result);
                         var pageNr = data[0].ToObject<Pagination>();
                         var indicators = data[1].ToObject<Indicator[]>();

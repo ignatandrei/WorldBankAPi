@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.10.6" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\WorldBank.Repository\WorldBank.Repository.csproj" />
   </ItemGroup>
 
