@@ -8,6 +8,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 /// <summary>
 /// http://haacked.com/archive/2012/01/02/structuring-unit-tests.aspx/
 /// </summary>
@@ -37,6 +38,18 @@ namespace WorldBank.Test
         {
             var summary = BenchmarkRunner.Run(this.GetType());
             //Process.Start(summary.ResultsDirectoryPath);
+        }
+
+        [Fact]
+        public async Task TestTasks()
+        {
+            var list= new List<Task>();
+            for(int i = 0; i < 10; i++)
+            {
+                list.Add(GetAndInterpretData());
+            }
+            await Task.WhenAll(list.ToArray());
+            Assert.False(list.Exists(t => t.Exception != null));
         }
     }
 }
